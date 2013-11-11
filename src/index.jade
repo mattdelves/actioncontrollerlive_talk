@@ -1,0 +1,72 @@
+!!! 5
+html
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+    title ActiveController::Live
+
+    //- Check out 'src/bower_components/prism/themes/' for available themes
+    link(rel='stylesheet', type='text/css', href='bower_components/prism/themes/prism-tomorrow.css')
+
+    link(rel='stylesheet', type='text/css', href='styles/main.css')
+
+  body
+
+    article
+
+      section
+        h2 ActiveController::Live
+
+      section
+        h2 Server Sent Events
+        h3 <a href="https://en.wikipedia.org/wiki/Server-sent_events">wikipedia link</a>
+        ul
+          li Get told by the server
+          li Eliminates polling / waiting
+          li HTML 5 (buzzword compliant)
+
+      section
+        h2 demo time!
+
+      section
+        h2 Ruby code
+        code.language-ruby
+          pre.
+            include ActionController::Live
+            response.headers['Content-Type'] = 'text/event-stream'
+            100.times do
+              response.stream.write "Hello World\n\n"
+            end
+            response.stream.close
+
+      section
+        h2 Javascript code
+        code.language-javascript
+          pre.
+            source.addEventListener("/awesome", function(evt) {
+              // Do Awesome here
+              console.log(evt);
+            });
+
+      section
+        h2 Which webserver
+        ul
+          li Unicorn?
+          li Puma?
+          li Thin?
+          li Webrick? (DON'T USE THIS!!!)
+
+      section
+        h2 Build awesome things!
+
+      section
+        h2 @mattdelves
+
+    script(src='bower_components/bespoke.js/dist/bespoke.min.js')
+    script(src='bower_components/bespoke-bullets/dist/bespoke-bullets.min.js')
+    script(src='bower_components/bespoke-scale/dist/bespoke-scale.min.js')
+    script(src='bower_components/bespoke-hash/dist/bespoke-hash.min.js')
+    script(src='bower_components/bespoke-progress/dist/bespoke-progress.min.js')
+    script(src='bower_components/bespoke-state/dist/bespoke-state.min.js')
+    script(src='bower_components/prism/prism.js')
+    script(src='scripts/main.js')
