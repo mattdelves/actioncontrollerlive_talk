@@ -19,10 +19,10 @@ html
 
       section
         h2 Server Sent Events
-        h3 <a href="https://en.wikipedia.org/wiki/Server-sent_events">wikipedia link</a>
+        h3 <a href="https://en.wikipedia.org/wiki/Server-sent_events">en.wikipedia.org/wiki/Server-sent_events</a>
         ul
+          li 
           li Get told by the server
-          li Eliminates polling / waiting
           li HTML 5 (buzzword compliant)
 
       section
@@ -33,11 +33,13 @@ html
         code.language-ruby
           pre.
             include ActionController::Live
-            response.headers['Content-Type'] = 'text/event-stream'
-            100.times do
-              response.stream.write "Hello World\n\n"
+            def awesome
+              response.headers['Content-Type'] = 'text/event-stream'
+              100.times do
+                response.stream.write "Hello World\n\n"
+              end
+              response.stream.close
             end
-            response.stream.close
 
       section
         h2 Javascript code
